@@ -13,17 +13,17 @@ private:
 	const BYTE* (__stdcall PlanarAccess::*_GetReadPtr)(avxsynth::VideoFrame *frame, int i);
 	BYTE* (__stdcall PlanarAccess::*_GetWritePtr)(avxsynth::VideoFrame *frame, int i);
 
-	int __stdcall &YV12_GetPitch(avxsynth::VideoFrame *frame, int i);
-	
-	int __stdcall &YUY2_GetPitch(avxsynth::VideoFrame *frame, int i);
+	int __stdcall YV12_GetPitch(avxsynth::VideoFrame *frame, int i);
 
-	const BYTE *__stdcall &YV12_GetReadPtr(avxsynth::VideoFrame *frame, int i);
+	int __stdcall YUY2_GetPitch(avxsynth::VideoFrame *frame, int i);
 
-	const BYTE *__stdcall &YUY2_GetReadPtr(avxsynth::VideoFrame *frame, int i);
+	const BYTE *__stdcall YV12_GetReadPtr(avxsynth::VideoFrame *frame, int i);
 
-	BYTE *__stdcall &YV12_GetWritePtr(avxsynth::VideoFrame *frame, int i);
+	const BYTE *__stdcall YUY2_GetReadPtr(avxsynth::VideoFrame *frame, int i);
 
-	BYTE *__stdcall &YUY2_GetWritePtr(avxsynth::VideoFrame *frame, int i);
+	BYTE *__stdcall YV12_GetWritePtr(avxsynth::VideoFrame *frame, int i);
+
+	BYTE *__stdcall YUY2_GetWritePtr(avxsynth::VideoFrame *frame, int i);
 
 public:
 	int	width[3];

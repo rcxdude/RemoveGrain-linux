@@ -43,9 +43,9 @@ BYTE *__stdcall PlanarAccess::YUY2_GetWritePtr(VideoFrame *frame, int i)
 
 PlanarAccess::PlanarAccess(const VideoInfo &vi, bool planar)
 {
-	_GetPitch = YUY2_GetPitch;
-	_GetReadPtr = YUY2_GetReadPtr;
-	_GetWritePtr = YUY2_GetWritePtr;
+	_GetPitch = &PlanarAccess::YUY2_GetPitch;
+	_GetReadPtr = &PlanarAccess::YUY2_GetReadPtr;
+	_GetWritePtr = &PlanarAccess::YUY2_GetWritePtr;
 	width[1] = width[0] = vi.width;
 	height[1] = height[0] = vi.height;
 	if( vi.IsYUV() )
@@ -54,9 +54,9 @@ PlanarAccess::PlanarAccess(const VideoInfo &vi, bool planar)
 		if( vi.IsYV12() )
 		{
 			height[1] /= 2;
-			_GetPitch = YV12_GetPitch;
-			_GetReadPtr = YV12_GetReadPtr;
-			_GetWritePtr = YV12_GetWritePtr;
+			_GetPitch = &PlanarAccess::YV12_GetPitch;
+			_GetReadPtr = &PlanarAccess::YV12_GetReadPtr;
+			_GetWritePtr = &PlanarAccess::YV12_GetWritePtr;
 		}
 	}
 	width[2] = width[1];
